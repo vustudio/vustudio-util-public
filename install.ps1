@@ -1,6 +1,6 @@
 # Vu Studio Installer Bootstrap
 # This lightweight script handles admin elevation before downloading the main installer
-# Usage: irm https://raw.githubusercontent.com/vustudio/vustudio-util-public/main/install.ps1 | iex
+# Usage: irm https://raw.githubusercontent.com/[YOUR-USERNAME]/vustudio-winutil/main/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
 
@@ -15,7 +15,7 @@ if (-not $isAdmin) {
     
     @'
 # Download and run the main Vu Studio installer
-$url = "https://raw.githubusercontent.com/vustudio/vustudio-util-public/main/vustudio.ps1"
+$url = "https://install.vustudio.network/vustudio.ps1"
 Write-Host "Downloading Vu Studio Installer..." -ForegroundColor Green
 try {
     $script = Invoke-WebRequest -Uri $url -UseBasicParsing | Select-Object -ExpandProperty Content
@@ -34,5 +34,5 @@ try {
 
 # If already admin, download and run directly
 Write-Host "Downloading Vu Studio Installer..." -ForegroundColor Green
-$mainScript = Invoke-WebRequest -Uri "https://raw.githubusercontent.com/vustudio/vustudio-util-public/main/vustudio.ps1" -UseBasicParsing | Select-Object -ExpandProperty Content
+$mainScript = Invoke-WebRequest -Uri "https://install.vustudio.network/vustudio.ps1" -UseBasicParsing | Select-Object -ExpandProperty Content
 Invoke-Expression $mainScript
